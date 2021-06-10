@@ -1,0 +1,80 @@
+{
+  "name": "public-cap-supabase",
+  "version": "1.0.0",
+  "description": "A simple CAP project.",
+  "repository": "<Add your repository here>",
+  "license": "UNLICENSED",
+  "private": true,
+  "dependencies": {
+    "@sap/cds": "^5",
+    "@supabase/supabase-js": "^1.13.2",
+    "cds-dbm": "^0.0.26",
+    "cds-pg": "^0.1.2",
+    "cookie-parser": "^1.4.5",
+    "cookie-session": "^1.4.0",
+    "express": "^4"
+  },
+  "devDependencies": {
+    "sqlite3": "^5.0.2"
+  },
+  "scripts": {
+    "start": "cds run",
+    "deploy": "pnpx cds-dbm deploy",
+    "tailwind": "pnpx tailwindcss-cli@latest build ./app/vue/tailwind.css -o ./app/vue/style.css",
+    "tailwind:prod": "NODE_ENV=production pnpx tailwindcss-cli@latest build ./app/vue/tailwind.css -o ./app/vue/style.css"
+  },
+  "cds": {
+    "requires": {
+      "auth": {
+        "impl": "libs/auth.js"
+      },
+      "db": {
+        "kind": "database"
+      },
+      "database": {
+        "impl": "cds-pg",
+        "model": [
+          "srv"
+        ]
+      }
+    },
+    "migrations": {
+      "db": {
+        "schema": {
+          "default": "public",
+          "clone": "_cdsdbm_clone",
+          "reference": "_cdsdbm_ref"
+        },
+        "deploy": {
+          "tmpFile": "tmp/_autodeploy.json",
+          "undeployFile": "db/undeploy.json"
+        }
+      }
+    }
+  },
+  "eslintConfig": {
+    "extends": "eslint:recommended",
+    "env": {
+      "es2020": true,
+      "node": true,
+      "jest": true,
+      "mocha": true
+    },
+    "globals": {
+      "SELECT": true,
+      "INSERT": true,
+      "UPDATE": true,
+      "DELETE": true,
+      "CREATE": true,
+      "DROP": true,
+      "CDL": true,
+      "CQL": true,
+      "CXL": true,
+      "cds": true
+    },
+    "rules": {
+      "no-console": "off",
+      "require-atomic-updates": "off"
+    }
+  }
+}

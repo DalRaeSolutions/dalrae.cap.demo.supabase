@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>CDS / Supabase</title>
+    <link href="./style.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="https://cdn.jsdelivr.net/npm/http-vue-loader@1.4.1/src/httpVueLoader.min.js"></script>
+    <script src="https://unpkg.com/@supabase/supabase-js"></script>
+
+    <style>
+      html, body { margin: 0; padding: 0; }
+    </style>
+  </head>
+
+  <body>
+    <div id="app">
+      <index />
+    </div>
+  </body>
+
+  <script type="text/javascript">
+    new Vue({
+      el: "#app",
+      components: {
+        "index": httpVueLoader("index.vue"),
+      },
+    });
+  </script>
+</html>

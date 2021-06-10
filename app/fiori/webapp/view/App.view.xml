@@ -1,0 +1,41 @@
+<mvc:View
+	controllerName="dalrae.cap.supabase.fioridemo.controller.App"
+	displayBlock="true"
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:smartFilterBar="sap.ui.comp.smartfilterbar"
+	xmlns:smartTable="sap.ui.comp.smarttable"
+	xmlns:html="http://www.w3.org/1999/xhtml"
+	xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
+	<App
+		id="app"
+		busy="{appView>/busy}"
+		busyIndicatorDelay="{appView>/delay}">
+		<Page title="Work orders">
+			<smartFilterBar:SmartFilterBar id="smartFilterBar" entitySet="LineItemsSet" persistencyKey="SmartFilter_Explored">
+				<smartFilterBar:controlConfiguration>
+					<smartFilterBar:ControlConfiguration key="Bukrs">
+						<smartFilterBar:defaultFilterValues>
+							<smartFilterBar:SelectOption low="0001">
+							</smartFilterBar:SelectOption>
+						</smartFilterBar:defaultFilterValues>
+					</smartFilterBar:ControlConfiguration>
+					<smartFilterBar:ControlConfiguration key="Gjahr">
+						<smartFilterBar:defaultFilterValues>
+							<smartFilterBar:SelectOption low="2014">
+							</smartFilterBar:SelectOption>
+						</smartFilterBar:defaultFilterValues>
+					</smartFilterBar:ControlConfiguration>
+				</smartFilterBar:controlConfiguration>
+			</smartFilterBar:SmartFilterBar>
+			<smartTable:SmartTable entitySet="WorkOrders" smartFilterId="smartFilterBar"
+				tableType="ResponsiveTable" useExportToExcel="true" beforeExport="onBeforeExport"
+				useVariantManagement="true" useTablePersonalisation="true" header="Line Items"
+				showRowCount="true" persistencyKey="SmartTableAnalytical_Explored" enableAutoBinding="true"
+				demandPopin="true" class="sapUiResponsiveContentPadding" enableAutoColumnWidth="true" editTogglable="true" app:useSmartToggle="true"/>
+
+			</Page>
+		</App>
+
+</mvc:View>
