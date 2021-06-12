@@ -1,0 +1,31 @@
+<mvc:View
+	controllerName="dalrae.cap.supabase.fioridemo.controller.App"
+	displayBlock="true"
+	xmlns="sap.m"
+	xmlns:f="sap.f"
+	xmlns:core="sap.ui.core"
+	xmlns:mvc="sap.ui.core.mvc">
+	<f:ShellBar
+		id="shell"
+		title="Supabase demo"
+		secondTitle="Integrating CAP and Supabase"
+		homeIcon="https://ui5.sap.com/resources/sap/ui/documentation/sdk/images/logo_ui5.png"
+		showCopilot="false"
+		showSearch="false"
+		showMenuButton="false"
+		showNavButton="false"
+		showNotifications="false"
+		avatarPressed="menu"
+		showProductSwitcher="false">
+			<f:profile>
+				<Avatar visible="{= !!${/loggedIn} }" initials="UI" src="{/url}" id="avatar" />
+			</f:profile>
+	</f:ShellBar>
+	
+	<core:ComponentContainer visible="{= !${/loggedIn} }" width="100vw" height="100vh" id="container1" usage="loginComponent" async="true" />
+	<core:ComponentContainer visible="{= !!${/loggedIn} }" width="100vw" height="100vh" id="container2" usage="orderComponent" async="true" />
+
+	<Menu itemSelected="logout" id="menu">
+		<MenuItem text="Logout"/>
+	</Menu>
+</mvc:View>

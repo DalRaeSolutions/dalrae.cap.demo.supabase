@@ -2,9 +2,10 @@ lockfileVersion: 5.3
 
 specifiers:
   '@sap/cds': ^5
-  '@supabase/supabase-js': ^1.13.2
+  '@sap/ux-specification': ^1.90.1
+  '@supabase/supabase-js': ^1.14.0
   cds-dbm: ^0.0.26
-  cds-pg: ^0.1.2
+  cds-pg: 0.1.1
   cookie-parser: ^1.4.5
   cookie-session: ^1.4.0
   express: ^4
@@ -12,14 +13,15 @@ specifiers:
 
 dependencies:
   '@sap/cds': registry.npmjs.org/@sap/cds/5.1.5
-  '@supabase/supabase-js': 1.13.2
+  '@supabase/supabase-js': 1.14.0
   cds-dbm: 0.0.26
-  cds-pg: 0.1.2
+  cds-pg: 0.1.1
   cookie-parser: 1.4.5
   cookie-session: 1.4.0
   express: 4.17.1
 
 devDependencies:
+  '@sap/ux-specification': registry.npmjs.org/@sap/ux-specification/1.90.1
   sqlite3: 5.0.2
 
 packages:
@@ -81,8 +83,8 @@ packages:
       cross-fetch: 3.1.4
     dev: false
 
-  /@supabase/postgrest-js/0.29.0:
-    resolution: {integrity: sha512-QvpzatmcOwPTbgCJacLqpwPPsbJ2erEA2ysS4+7avJIXT8C/WbmsM7KsQHD9JcEc6fqocMpqCm7YXJIFfUZTBw==}
+  /@supabase/postgrest-js/0.30.0:
+    resolution: {integrity: sha512-pAhoTAQ0gItI/10U6vbk+eVLeOOz6WrviYyvl3AN3BNxV11Qb8gjJmLQRMD4BPGKwW2eRpeUj4Rzbu4PswTWCA==}
     dependencies:
       cross-fetch: 3.1.4
     dev: false
@@ -100,11 +102,11 @@ packages:
       cross-fetch: 3.1.4
     dev: false
 
-  /@supabase/supabase-js/1.13.2:
-    resolution: {integrity: sha512-LrsHt2bSgmIPqJQchxdJoS6P6dHOyE+iYZPFuVrXwdoWB2GQJA4fd0aJutypiWZz4JP3Gdcyl6JLrNgn26GT6A==}
+  /@supabase/supabase-js/1.14.0:
+    resolution: {integrity: sha512-/hUrGkT4YZaDn3IUsmZ3jWfMrlVdXauiD4YLqBzDDFt2x9eyn1w2q6ryfGLFwZ/OoDY8vvHhIFKaO98hhHzOHg==}
     dependencies:
       '@supabase/gotrue-js': 1.16.2
-      '@supabase/postgrest-js': 0.29.0
+      '@supabase/postgrest-js': 0.30.0
       '@supabase/realtime-js': 1.0.9
       '@supabase/storage-js': 1.2.1
     dev: false
@@ -369,14 +371,13 @@ packages:
       - supports-color
     dev: false
 
-  /cds-pg/0.1.2:
-    resolution: {integrity: sha512-zsSFyE8QLMaSc5ejVylqc9pTbO1a3Zyx9CfqFieu5/gKFF0rKtUbWmMShvJtlMnT8DJhZuD12QgesMq+jrTjnw==}
+  /cds-pg/0.1.1:
+    resolution: {integrity: sha512-XLp0i8bSunqDaWGp9qUljEOthGCp3q9AssOES0ZNVAqjo7F7BngjR4ry0PZiwLHoQEvu9Un7aT/DICW742burA==}
     engines: {node: '>=12'}
     hasBin: true
     dependencies:
       '@sap/cds': registry.npmjs.org/@sap/cds/5.1.5
       moment: 2.29.1
-      passport: 0.4.1
       pg: 8.6.0
       pg-format: 1.0.4
     transitivePeerDependencies:
@@ -1614,19 +1615,6 @@ packages:
     engines: {node: '>= 0.8'}
     dev: false
 
-  /passport-strategy/1.0.0:
-    resolution: {integrity: sha1-tVOaqPwiWj0a0XlHbd8ja0QPUuQ=}
-    engines: {node: '>= 0.4.0'}
-    dev: false
-
-  /passport/0.4.1:
-    resolution: {integrity: sha512-IxXgZZs8d7uFSt3eqNjM9NQ3g3uQCW5avD8mRNoXV99Yig50vjuaez6dQK2qC0kVWPRTujxY0dWgGfT09adjYg==}
-    engines: {node: '>= 0.4.0'}
-    dependencies:
-      passport-strategy: 1.0.0
-      pause: 0.0.1
-    dev: false
-
   /path-is-absolute/1.0.1:
     resolution: {integrity: sha1-F0uSaHNVNP+8es5r9TpanhtcX18=}
     engines: {node: '>=0.10.0'}
@@ -1634,10 +1622,6 @@ packages:
 
   /path-to-regexp/0.1.7:
     resolution: {integrity: sha1-32BBeABfUi8V60SQ5yR6G/qmf4w=}
-    dev: false
-
-  /pause/0.0.1:
-    resolution: {integrity: sha1-HUCLP9t2kjuVQ9lvtMnf1TXZy10=}
     dev: false
 
   /performance-now/2.1.0:
@@ -2381,6 +2365,13 @@ packages:
       - debug
       - supports-color
     dev: false
+
+  registry.npmjs.org/@sap/ux-specification/1.90.1:
+    resolution: {integrity: sha512-f6HYAZqBqB5uI2GkUnhA+EWSBaB39Jcl6+u5xp3KcV7R61qbc+WWeYH2gEgkh++j5hLbCLlLoE/YxW3cXFaXEQ==, registry: https://npm.sap.com/, tarball: https://registry.npmjs.org/@sap/ux-specification/-/ux-specification-1.90.1.tgz}
+    name: '@sap/ux-specification'
+    version: 1.90.1
+    engines: {node: '>=12.18.3', yarn: '>=1.22.5'}
+    dev: true
 
   registry.npmjs.org/@sap/xsenv/3.1.0:
     resolution: {integrity: sha512-Z+fwO13tcad+eoe8iTrbR471OacU754puabhRn8OI1MU2pPebDQu8rcHN7sR9JQinh4dSs953WkbDneOmvCWuA==, registry: https://npm.sap.com/, tarball: https://registry.npmjs.org/@sap/xsenv/-/xsenv-3.1.0.tgz}

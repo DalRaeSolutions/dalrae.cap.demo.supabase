@@ -5,6 +5,6 @@ module.exports = (req, res, next) => {
     req.user = new cds.User(req?.session?.user)
     next()
   } else {
-    res.status(401);
+    res.status(401).end();
   }
 }

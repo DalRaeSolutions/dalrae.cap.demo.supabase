@@ -6,4 +6,6 @@ service OrderService @(path: '/orders', requires: 'authenticated-user') {
     *,
     customer.name as customerName
   }
+
+  entity Customers  as projection on t.Customers;
 }

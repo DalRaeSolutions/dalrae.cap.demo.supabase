@@ -3,6 +3,7 @@ const cookieSession = require('cookie-session');
 const express = require('express');
 
 module.exports = async (app) => {
+  console.log('adding sessions and cookies')
   app.use(cookieSession({
     name: 'supacookie',
     keys: ['key1', 'key2']
@@ -13,5 +14,12 @@ module.exports = async (app) => {
   app.post('/auth/cookie', (req, res) => {
     req.session = req.body?.user ? req.body : null;
     res.status(201).json(req.session || {});
+  })
+
+  app.get('/auth/me', (req, res) => {
+    res.status(200).json({
+      loggedIn: !!req?.session?.user,
+      user: req?.session?.user
+    })
   })
 }
