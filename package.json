@@ -5,6 +5,9 @@
   "repository": "<Add your repository here>",
   "license": "UNLICENSED",
   "private": true,
+  "engines": {
+    "node": "14.*"
+  },
   "dependencies": {
     "@sap/cds": "^5",
     "@supabase/supabase-js": "^1.14.0",
