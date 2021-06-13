@@ -29,35 +29,156 @@ annotate schema.WorkOrders with @(
     ],
     Identification       : [{Value : description}],
     SelectionFields      : [customer_ID],
-    LineItem             : {
-      $value             : [
-        {Value : ID, Label: 'Order ID' },
-        {Value : startDate, Label: 'Start date' },
-        {Value : endDate, Label: 'End date'},
-        {Value : customer_ID, Label: 'Customer'},
-        {Value : createdBy, Label: 'Ordered by'},
-        {Value : createdAt, Label: 'Ordered on'},
-        // {
-        //   $Type                     : 'UI.DataField',
-        //   Value                     : isExpired,
-        //   Criticality               : isExpiredStatus,
-        //   CriticalityRepresentation : #WithIcon
-        // }
-      ],
-      //![@UI.Criticality] : isExpiredStatus
-    },
-    Facets               : [
+    LineItem             : {$value : [
       {
-        $Type  : 'UI.ReferenceFacet',
-        Label  : '{i18n>General}',
-        Target : '@UI.FieldGroup#General'
-      }
+        Value : ID,
+        Label : 'Order ID'
+      },
+      {
+        Value : startDate,
+        Label : 'Start date'
+      },
+      {
+        Value : endDate,
+        Label : 'End date'
+      },
+      {
+        Value : customer_ID,
+        Label : 'Customer'
+      },
+      {
+        Value : createdBy,
+        Label : 'Ordered by'
+      },
+      {
+        Value : createdAt,
+        Label : 'Ordered on'
+      },
     // {
-    //   $Type  : 'UI.ReferenceFacet',
-    //   Label  : '{i18n>AllocationsList}',
-    //   Target : 'allocations/@UI.LineItem'
+    //   $Type                     : 'UI.DataField',
+    //   Value                     : isExpired,
+    //   Criticality               : isExpiredStatus,
+    //   CriticalityRepresentation : #WithIcon
     // }
     ],
+    //![@UI.Criticality] : isExpiredStatus
+    },
+    Facets               : [{
+      $Type  : 'UI.ReferenceFacet',
+      Label  : '{i18n>General}',
+      Target : '@UI.FieldGroup#General'
+    },
+    {
+      $Type  : 'UI.ReferenceFacet',
+      Label  : 'Other orders by this customer',
+      Target : 'customer/orders/@UI.LineItem'
+    }
+    ],
+    FieldGroup #Created  : {Data : [
+      {Value : createdBy},
+      {Value : createdAt},
+    ]},
+    FieldGroup #General  : {Data : [
+      {Value : customer.name, Label: 'Customer name'}
+    ]},
+    FieldGroup #Modified : {Data : [
+      {Value : modifiedBy},
+      {Value : modifiedAt},
+    ]}
+  }
+) {
+  ID          @(
+    title       : 'Order',
+    UI.HiddenFilter,
+    Core.Computed,
+    Common.Text : {
+      $value                 : description,
+      ![@UI.TextArrangement] : #TextOnly
+    }
+  );
+  description @title  : 'Description';
+
+  customer_ID 
+    @title: 'Customer'
+              @Common : {
+    Text                     : customer.name,
+    TextArrangement          : #TextOnly,
+    ValueList                : {
+      Label           : 'Customer',
+      CollectionPath  : 'Customers',
+      SearchSupported : false,
+      Parameters      : [{
+        $Type             : 'Common.ValueListParameterOut',
+        LocalDataProperty : customer_ID,
+        ValueListProperty : 'PlantNumber'
+      }],
+    },
+    ValueListWithFixedValues : true,
+  };
+
+  customer @(
+    title  : 'Customer',
+    Common : {
+      Text                     : customer.name,
+      TextArrangement          : #TextOnly
+    }
+  );
+};
+
+annotate schema.Customers with @(
+  Capabilities : {
+    Insertable : true,
+    Updatable  : true,
+    Deletable  : false
+  },
+  Common       : {SemanticKey : [ID]},
+  UI           : {
+    HeaderInfo           : {
+      TypeName       : 'Customer',
+      TypeNamePlural : 'Customers',
+      Title          : {Value : name}
+    },
+    HeaderFacets         : [
+      {
+        $Type  : 'UI.ReferenceFacet',
+        Label  : 'Created',
+        Target : '@UI.FieldGroup#Created'
+      },
+      {
+        $Type  : 'UI.ReferenceFacet',
+        Label  : 'Modified',
+        Target : '@UI.FieldGroup#Modified'
+      },
+    ],
+    Identification       : [{Value : name}],
+    SelectionFields      : [name],
+    LineItem             : {$value : [
+      {
+        Value : ID,
+        Label : 'Order ID'
+      },
+      {
+        Value : createdBy,
+        Label : 'Created by'
+      },
+      {
+        Value : createdAt,
+        Label : 'Created on'
+      },
+    // {
+    //   $Type                     : 'UI.DataField',
+    //   Value                     : isExpired,
+    //   Criticality               : isExpiredStatus,
+    //   CriticalityRepresentation : #WithIcon
+    // }
+    ],
+    //![@UI.Criticality] : isExpiredStatus
+    },
+    Facets               : [{
+      $Type  : 'UI.ReferenceFacet',
+      Label  : 'Orders',
+      Target : 'orders/@UI.LineItem'
+    }],
     FieldGroup #Created  : {Data : [
       {Value : createdBy},
       {Value : createdAt},
@@ -68,32 +189,14 @@ annotate schema.WorkOrders with @(
     ]}
   }
 ) {
-  ID          @(
-    title       : '{i18n>Project}',
+  ID   @(
+    title       : 'Customer',
     UI.HiddenFilter,
     Core.Computed,
     Common.Text : {
-      $value                 : description,
+      $value                 : name,
       ![@UI.TextArrangement] : #TextOnly
     }
   );
-  description @title     : 'Description';
-  customer    @(
-    title  : '{i18n>Customer}',
-    Common : {
-      ValueList                : {CollectionPath : 'Customers', },
-      ValueListWithFixedValues : true,
-      Text                     : customer.name,
-      TextArrangement          : #TextOnly
-    }
-  );
-  customer_ID @(
-    title  : 'Customer',
-    Common : {
-      ValueList                : {CollectionPath : 'Customers', },
-      ValueListWithFixedValues : true,
-      Text                     : customer.name,
-      TextArrangement          : #TextOnly
-    }
-  );
+  name @title : 'Name'
 };

@@ -55,7 +55,6 @@
         "sap.m": {},
         "sap.f": {},
         "sap.ui.mdc": {},
-        "sap.ui": {},
         "sap.ushell": {},
         "sap.collaboration": {
           "lazy": true

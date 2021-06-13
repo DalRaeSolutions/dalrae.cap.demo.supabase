@@ -9,6 +9,7 @@ entity WorkOrders : cuid, managed {
   customer: Association to Customers;
 }
 
+@cds.odata.valuelist
 entity Customers : cuid, managed {
   name: String(100);
   orders: Association to many WorkOrders on orders.customer = $self;

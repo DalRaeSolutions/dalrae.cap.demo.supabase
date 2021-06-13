@@ -11,7 +11,7 @@ sap.ui.define([
 			this.getView().addStyleClass(this.getOwnerComponent().getContentDensityClass());
 			this.getView().setModel(new JSONModel({
 				loggedIn: false,
-				url: `https://avatars.dicebear.com/api/human/${Math.random().toString(16).slice(2)}.svg`
+				url: ''
 			}))
 
 			this.cookie(client.auth.session() || {})
@@ -20,8 +20,9 @@ sap.ui.define([
 			})
 		},
 		onBeforeRendering: async function () {
-			const { loggedIn } = await (await fetch('/auth/me')).json();
+			const { loggedIn, user } = await (await fetch('/auth/me')).json();
 			this.getView().getModel().setProperty('/loggedIn', loggedIn);
+			this.getView().getModel().setProperty('/url', `https://avatars.dicebear.com/api/human/${user.id || Math.random().toString(16).slice(2)}.svg`)
 		},
 		menu: function () {
 			this.getView().byId('menu').openBy(this.getView().byId('avatar'))

@@ -9,7 +9,7 @@
     <script
       id="sap-ui-bootstrap"
       src="https://sapui5.hana.ondemand.com/resources/sap-ui-core.js"
-      data-sap-ui-libs="sap.m"
+      data-sap-ui-libs="sap.m, sap.ui.mdc, sap.f, sap.fe.core, sap.ushell"
       data-sap-ui-theme="sap_fiori_3"
       data-sap-ui-compatVersion="edge"
       data-sap-ui-resourceroots='{
@@ -17,6 +17,23 @@
 		}'
     ></script>
     <script src="https://unpkg.com/@supabase/supabase-js"></script>
+    <script>
+      if ("serviceWorker" in navigator) {
+        if (navigator.serviceWorker.controller) {
+          console.log("[Service-Worker-Registration] active service worker found, no need to register");
+        } else {
+          // Register the service worker
+          navigator.serviceWorker
+            .register("service-worker.js", {
+              scope: "./"
+            })
+            .then(function (reg) {
+              console.log("[Service-Worker-Registration] Service worker has been registered for scope: " + reg.scope);
+            });
+        }
+      }
+    </script>
+    <link rel="manifest" href="dist/manifest.webmanifest">
     <style>
       .fullWidth { width: 100% }
     </style>
