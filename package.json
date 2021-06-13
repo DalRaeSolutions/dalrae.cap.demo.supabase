@@ -23,7 +23,7 @@
     "deploy": "pnpx cds-dbm deploy",
     "tailwind": "pnpx tailwindcss-cli@latest build ./app/vue/tailwind.css -o ./app/vue/style.css",
     "tailwind:prod": "NODE_ENV=production pnpx tailwindcss-cli@latest build ./app/vue/tailwind.css -o ./app/vue/style.css",
-    "build": "cd app && ui5 build"
+    "build:local": "cd app && ui5 build"
   },
   "cds": {
     "requires": {
