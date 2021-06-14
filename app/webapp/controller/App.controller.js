@@ -30,6 +30,9 @@ sap.ui.define([
 		logout: function () {
 			window.client.auth.signOut();
 		},
+		github: function () {
+			window.open('https://github.com/DalRaeSolutions/dalrae.cap.demo.supabase', '_blank');
+		},
 		cookie: function (session) {
 			fetch('/auth/cookie', {
 				method: "POST",

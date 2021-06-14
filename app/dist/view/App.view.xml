@@ -25,7 +25,8 @@
 	<core:ComponentContainer visible="{= !${/loggedIn} }" width="100vw" height="100vh" id="container1" usage="loginComponent" async="true" />
 	<core:ComponentContainer visible="{= !!${/loggedIn} }" width="100vw" height="100vh" id="container2" usage="orderComponent" async="true" />
 
-	<Menu itemSelected="logout" id="menu">
-		<MenuItem text="Logout"/>
+	<Menu id="menu">
+		<MenuItem text="Github" press="github" />
+		<MenuItem text="Logout" press="logout" />
 	</Menu>
 </mvc:View>

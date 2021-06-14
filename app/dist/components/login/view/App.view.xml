@@ -12,12 +12,11 @@
 				justifyContent="Center">
 				<Image src="./background.svg" width="313px" />
 				<Input width="313px" id="email" placeholder="you@domain.com" />
-				<Button is="button" icon="sap-icon://visits" text="Get magic link" width="313px" press="login" />
+				<Button id="button" icon="sap-icon://visits" text="Get magic link" width="313px" press="login" />
 
 				<MessageStrip
 					id="msg"
 					visible="false"
-					width="100%"
 					text="Check your email and click the magic link"
 					type="Success"
 					showIcon="true"
