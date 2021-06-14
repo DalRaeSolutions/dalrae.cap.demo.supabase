@@ -1,16 +1,25 @@
-using { managed, sap, cuid, sap.common.CodeList } from '@sap/cds/common';
+using {
+  managed,
+  sap,
+  cuid,
+  sap.common.CodeList
+} from '@sap/cds/common';
 
 namespace dalrae.cap.supabase.demo;
 
 entity WorkOrders : cuid, managed {
-  description: String(100);
-  startDate: Date;
-  endDate: Date;
-  customer: Association to Customers;
+  description : String(100);
+  startDate   : Date;
+  endDate     : Date;
+  customer    : Association to Customers;
+  price       : Decimal;
+  paid        : Boolean;
+  paidStatus : Integer;
 }
 
 @cds.odata.valuelist
 entity Customers : cuid, managed {
-  name: String(100);
-  orders: Association to many WorkOrders on orders.customer = $self;
+  name   : String(100);
+  orders : Association to many WorkOrders
+             on orders.customer = $self;
 }

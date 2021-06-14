@@ -35,14 +35,6 @@ annotate schema.WorkOrders with @(
         Label : 'Order ID'
       },
       {
-        Value : startDate,
-        Label : 'Start date'
-      },
-      {
-        Value : endDate,
-        Label : 'End date'
-      },
-      {
         Value : customer_ID,
         Label : 'Customer'
       },
@@ -54,14 +46,23 @@ annotate schema.WorkOrders with @(
         Value : createdAt,
         Label : 'Ordered on'
       },
-    // {
-    //   $Type                     : 'UI.DataField',
-    //   Value                     : isExpired,
-    //   Criticality               : isExpiredStatus,
-    //   CriticalityRepresentation : #WithIcon
-    // }
+      {
+        Value : price,
+        Label : 'Price'
+      },
+      {
+        Value : paid,
+        Label : 'Is paid'
+      },
+    {
+      $Type                     : 'UI.DataField',
+      Value                     : paid,
+      Label:                    'Paid?',
+      Criticality               : paidStatus,
+      CriticalityRepresentation : #WithIcon
+    }
     ],
-    //![@UI.Criticality] : isExpiredStatus
+    ![@UI.Criticality] : paidStatus
     },
     Facets               : [{
       $Type  : 'UI.ReferenceFacet',
@@ -165,14 +166,7 @@ annotate schema.Customers with @(
         Value : createdAt,
         Label : 'Created on'
       },
-    // {
-    //   $Type                     : 'UI.DataField',
-    //   Value                     : isExpired,
-    //   Criticality               : isExpiredStatus,
-    //   CriticalityRepresentation : #WithIcon
-    // }
     ],
-    //![@UI.Criticality] : isExpiredStatus
     },
     Facets               : [{
       $Type  : 'UI.ReferenceFacet',
