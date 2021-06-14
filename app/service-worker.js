@@ -128,7 +128,6 @@ const fetchListener = async event => {
   // don't try to handle e.g. data: URIs, don't check any request that is not GET either
   if (event.request.method !== 'GET' || event.request.headers.has('range')) return;
   if (!url.protocol.startsWith('http')) return;
-  if (!applicationRegex.test(url.pathname)) return;
 
   event.respondWith(
     caches
