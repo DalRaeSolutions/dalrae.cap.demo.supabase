@@ -15,17 +15,27 @@ annotate schema.WorkOrders with @(
       TypeNamePlural : 'Orders',
       Title          : {Value : description}
     },
+    DataPoint #Price     : {
+      Value : price,
+      Title : 'Price'
+    },
+    DataPoint #Paid      : {
+      Value                     : paid,
+      Title                     : 'Paid',
+      Criticality               : paidStatus,
+      CriticalityRepresentation : #WithIcon
+    },
     HeaderFacets         : [
       {
         $Type  : 'UI.ReferenceFacet',
-        Label  : 'Created',
-        Target : '@UI.FieldGroup#Created'
+        Label  : 'Price',
+        Target : '@UI.DataPoint#Price'
       },
       {
         $Type  : 'UI.ReferenceFacet',
-        Label  : 'Modified',
-        Target : '@UI.FieldGroup#Modified'
-      },
+        Label  : 'Paid',
+        Target : '@UI.DataPoint#Paid'
+      }
     ],
     Identification       : [{Value : description}],
     SelectionFields      : [customer_ID],
@@ -54,33 +64,41 @@ annotate schema.WorkOrders with @(
         Value : paid,
         Label : 'Is paid'
       },
-    {
-      $Type                     : 'UI.DataField',
-      Value                     : paid,
-      Label:                    'Paid?',
-      Criticality               : paidStatus,
-      CriticalityRepresentation : #WithIcon
-    }
+      {
+        $Type                     : 'UI.DataField',
+        Value                     : paid,
+        Label                     : 'Paid?',
+        Criticality               : paidStatus,
+        CriticalityRepresentation : #WithIcon
+      }
     ],
-    ![@UI.Criticality] : paidStatus
+    //![@UI.Criticality] : paidStatus
     },
-    Facets               : [{
-      $Type  : 'UI.ReferenceFacet',
-      Label  : '{i18n>General}',
-      Target : '@UI.FieldGroup#General'
-    },
-    {
-      $Type  : 'UI.ReferenceFacet',
-      Label  : 'Other orders by this customer',
-      Target : 'customer/orders/@UI.LineItem'
-    }
+    Facets               : [
+      {
+        $Type  : 'UI.ReferenceFacet',
+        Label  : '{i18n>General}',
+        Target : '@UI.FieldGroup#General'
+      },
+      {
+        $Type  : 'UI.ReferenceFacet',
+        Label  : 'Other orders by this customer',
+        Target : 'customer/orders/@UI.LineItem'
+      }
     ],
     FieldGroup #Created  : {Data : [
       {Value : createdBy},
       {Value : createdAt},
     ]},
-    FieldGroup #General  : {Data : [
-      {Value : customer.name, Label: 'Customer name'}
+    FieldGroup #Price    : {Data : [
+      {Value : price},
+      {Value : paid},
+    ]},
+    FieldGroup #General  : {Data : [{
+      Value : customer.name,
+      Label : 'Customer name'
+    }
+
     ]},
     FieldGroup #Modified : {Data : [
       {Value : modifiedBy},
@@ -97,11 +115,11 @@ annotate schema.WorkOrders with @(
       ![@UI.TextArrangement] : #TextOnly
     }
   );
-  description @title  : 'Description';
+  description @title                  : 'Description';
 
-  customer_ID 
-    @title: 'Customer'
-              @Common : {
+  customer_ID
+              @title                  : 'Customer'
+              @Common                 : {
     Text                     : customer.name,
     TextArrangement          : #TextOnly,
     ValueList                : {
@@ -117,11 +135,14 @@ annotate schema.WorkOrders with @(
     ValueListWithFixedValues : true,
   };
 
-  customer @(
+  price       @Measures.ISOCurrency   : currency;
+  currency    @Semantics.currencyCode : true;
+
+  customer    @(
     title  : 'Customer',
     Common : {
-      Text                     : customer.name,
-      TextArrangement          : #TextOnly
+      Text            : customer.name,
+      TextArrangement : #TextOnly
     }
   );
 };
@@ -166,8 +187,7 @@ annotate schema.Customers with @(
         Value : createdAt,
         Label : 'Created on'
       },
-    ],
-    },
+    ], },
     Facets               : [{
       $Type  : 'UI.ReferenceFacet',
       Label  : 'Orders',

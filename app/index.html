@@ -19,7 +19,7 @@
     <script src="https://unpkg.com/@supabase/supabase-js"></script>
     <script>
       navigator.serviceWorker
-        .register(`service-worker.js?${new Date().getTime()}`, {
+        .register(`service-worker.js`, {
           scope: "./"
         })
         .then(function (reg) {

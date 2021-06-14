@@ -71,7 +71,6 @@ const precacheFiles = [...new Set([
 const install = event => {
   event.waitUntil(
     caches.open(CACHE).then(function (cache) {
-      console.info('Opened cache');
       return cache.addAll(precacheFiles);
     }).catch(function (error) {
       console.error(error);
@@ -116,7 +115,7 @@ const onlineFirst = async (event, cache) => {
   return response;
 };
 
-const applicationRegex = /(^\/order\/(.*))/i;
+const applicationRegex = /^\/orders\/(.*)|^\/$|index/i;
 
 const fetchListener = async event => {
   const url = new URL(event.request.url);

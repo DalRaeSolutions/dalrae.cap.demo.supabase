@@ -13,6 +13,7 @@ entity WorkOrders : cuid, managed {
   endDate     : Date;
   customer    : Association to Customers;
   price       : Decimal;
+  currency    : String(1);
   paid        : Boolean;
   paidStatus : Integer;
 }
