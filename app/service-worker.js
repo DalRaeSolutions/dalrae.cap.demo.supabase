@@ -139,4 +139,4 @@ const fetchListener = async event => {
 
 self.addEventListener('activate', event => deleteCaches(event));
 self.addEventListener('install', event => install(event));
-//self.addEventListener('fetch', async event => await fetchListener(event));
+self.addEventListener('fetch', async event => await fetchListener(event));
