@@ -123,13 +123,13 @@ const fetchListener = async event => {
   const cacheName = CACHE; //applicationRegex.test(url.pathname) ? APP_CACHE_NAME : DATA_CACHE_NAME;
   const cacheFunction = applicationRegex.test(url.pathname) ? onlineFirst : offlineFirst;
 
-  console.info('[SW]', url.href)
-
   // don't try to handle e.g. data: URIs, don't check any request that is not GET either
   if (event.request.method !== 'GET' || event.request.headers.has('range')) return;
   if (!url.protocol.startsWith('http')) return;
   if (/auth/.test(url)) return;
-
+  
+  console.info('[SW]', url.href)
+  
   event.respondWith(
     caches
       .open(cacheName)

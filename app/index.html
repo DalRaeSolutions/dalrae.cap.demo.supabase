@@ -24,7 +24,7 @@
       //  } else {
           // Register the service worker
           navigator.serviceWorker
-            .register(`service-worker.js${new Date().getTime()}`, {
+            .register(`service-worker.js?${new Date().getTime()}`, {
               scope: "./"
             })
             .then(function (reg) {
