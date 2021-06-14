@@ -22,7 +22,7 @@ sap.ui.define([
 		onBeforeRendering: async function () {
 			const { loggedIn, user } = await $.getJSON('/auth/me');
 			this.getView().getModel().setProperty('/loggedIn', loggedIn);
-			this.getView().getModel().setProperty('/url', `https://avatars.dicebear.com/api/human/${user?.id || Math.random().toString(16).slice(2)}.svg`)
+			this.getView().getModel().setProperty('/url', `https://avatars.dicebear.com/api/human/${user.id || Math.random().toString(16).slice(2)}.svg`)
 		},
 		menu: function () {
 			this.getView().byId('menu').openBy(this.getView().byId('avatar'))
