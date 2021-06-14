@@ -1,7 +1,7 @@
 /* eslint-disable no-undef */
 //This is the service worker with the Advanced caching
 
-const CACHE = "advanced-caching-1623481471075";
+const CACHE = "cache-v1.0.0";
 const precacheFiles = [...new Set([
   'https://sapui5.hana.ondemand.com/resources/sap-ui-core.js',
   'https://sapui5.hana.ondemand.com/resources/sap/ui/core/library-preload.js',
