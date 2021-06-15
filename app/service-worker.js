@@ -115,7 +115,7 @@ const onlineFirst = async (event, cache) => {
   return response;
 };
 
-const applicationRegex = /^\/orders\/(.*)|^\/$|index/i;
+const applicationRegex = /^\/orders\/(.*)|^\/$|index|auth/i;
 
 const fetchListener = async event => {
   const url = new URL(event.request.url);
