@@ -6,7 +6,7 @@ module.exports = async (app) => {
   console.log('adding sessions and cookies', process.env.NODE_ENV === 'production')
   app.use(cookieSession({
     name: 'supacookie',
-    secure: process.env.NODE_ENV === 'production',
+    // secure: process.env.NODE_ENV === 'production',
     keys: ['key1', 'key2']
   }))
 
