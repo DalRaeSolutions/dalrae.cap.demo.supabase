@@ -2,10 +2,10 @@ lockfileVersion: 5.3
 
 specifiers:
   '@sap/cds': ^5
-  '@sap/ux-specification': ^1.90.1
-  '@supabase/supabase-js': ^1.14.0
-  cds-dbm: ^0.0.26
-  cds-pg: 0.1.1
+  '@sap/ux-specification': ^1.90.4
+  '@supabase/supabase-js': ^1.20.0
+  cds-dbm: ^0.0.27
+  cds-pg: 0.1.6
   cookie-parser: ^1.4.5
   cookie-session: ^1.4.0
   express: ^4
@@ -13,15 +13,15 @@ specifiers:
 
 dependencies:
   '@sap/cds': registry.npmjs.org/@sap/cds/5.1.5
-  '@supabase/supabase-js': 1.14.0
-  cds-dbm: 0.0.26
-  cds-pg: 0.1.1
+  '@supabase/supabase-js': 1.20.0
+  cds-dbm: 0.0.27
+  cds-pg: 0.1.6
   cookie-parser: 1.4.5
   cookie-session: 1.4.0
   express: 4.17.1
 
 devDependencies:
-  '@sap/ux-specification': registry.npmjs.org/@sap/ux-specification/1.90.1
+  '@sap/ux-specification': registry.npmjs.org/@sap/ux-specification/1.90.4
   sqlite3: 5.0.2
 
 packages:
@@ -77,38 +77,38 @@ packages:
       - debug
     dev: false
 
-  /@supabase/gotrue-js/1.16.2:
-    resolution: {integrity: sha512-zIVPYTN2f4rDQA/6nK9OPxzWNZ0N9gJzd/U1cu2ugZnwM0L7oiqk3/3ijxC2huLYveTOwqC9NMpKYWsQsLf6Bg==}
+  /@supabase/gotrue-js/1.16.6:
+    resolution: {integrity: sha512-tLaG4G4sMW2P1hyq05Nr0jM/6AbdiWkjOPbM+QZsuVSsNbZ/z+BNxuE5q+6zHOnoP+YKEHup7x9xKR0zy2UqUQ==}
     dependencies:
       cross-fetch: 3.1.4
     dev: false
 
-  /@supabase/postgrest-js/0.30.0:
-    resolution: {integrity: sha512-pAhoTAQ0gItI/10U6vbk+eVLeOOz6WrviYyvl3AN3BNxV11Qb8gjJmLQRMD4BPGKwW2eRpeUj4Rzbu4PswTWCA==}
+  /@supabase/postgrest-js/0.33.0:
+    resolution: {integrity: sha512-og6Evdkan7Qp6+tOch7Pyq+ZWMnrCQtPHWwPpsN5A3iYQSro2yn21Yvazs9qAFoWAeTGNkuTOVpShT5Mbc9WcQ==}
     dependencies:
       cross-fetch: 3.1.4
     dev: false
 
-  /@supabase/realtime-js/1.0.9:
-    resolution: {integrity: sha512-hGClyW7hHXW0PC6reJgaKFL0c3ubC+AVt7U/MxD0VJNjVXIw4PLj7DxgMpCIpNXksHJsLOBL8ht+BMhPb6rE8Q==}
+  /@supabase/realtime-js/1.1.1:
+    resolution: {integrity: sha512-kUew5KPjgWYtenxrQJWZ/tHMGlg5Qz++bbsiY8Y89AjZQioSO557MlGHaEoT6k4s7CJ6e/ctNsT7tRhCKJimcQ==}
     dependencies:
-      '@types/websocket': 1.0.2
+      '@types/websocket': 1.0.3
       websocket: 1.0.34
     dev: false
 
-  /@supabase/storage-js/1.2.1:
-    resolution: {integrity: sha512-r12+Dn8p1t4VtFaoDsRhZwFN/kYwisSxKrmxgzyftd8FdrxRaTKc0dVTvWzqurZlI/wrsAs0fKT2p2TrQJKlQQ==}
+  /@supabase/storage-js/1.4.0:
+    resolution: {integrity: sha512-7+SGyXOgdhtz8qHzXo64HiS66PT/y4F8YFNMtXqYOu1LjHh0YwtOgpPLDA8obiSsNVwZiKwpgBJkz4LHG1YvRQ==}
     dependencies:
       cross-fetch: 3.1.4
     dev: false
 
-  /@supabase/supabase-js/1.14.0:
-    resolution: {integrity: sha512-/hUrGkT4YZaDn3IUsmZ3jWfMrlVdXauiD4YLqBzDDFt2x9eyn1w2q6ryfGLFwZ/OoDY8vvHhIFKaO98hhHzOHg==}
+  /@supabase/supabase-js/1.20.0:
+    resolution: {integrity: sha512-G+BKKlr6a+q5Rf6OcNP3LInTih+hP92gmWp6zQZL2rYVvCa51LLhAtu+NrgMR6+AYs1D7ipLKYYiiq85Oerazg==}
     dependencies:
-      '@supabase/gotrue-js': 1.16.2
-      '@supabase/postgrest-js': 0.30.0
-      '@supabase/realtime-js': 1.0.9
-      '@supabase/storage-js': 1.2.1
+      '@supabase/gotrue-js': 1.16.6
+      '@supabase/postgrest-js': 0.33.0
+      '@supabase/realtime-js': 1.1.1
+      '@supabase/storage-js': 1.4.0
     dev: false
 
   /@tootallnate/once/1.1.2:
@@ -138,8 +138,8 @@ packages:
       '@types/node': 15.12.1
     dev: false
 
-  /@types/websocket/1.0.2:
-    resolution: {integrity: sha512-B5m9aq7cbbD/5/jThEr33nUY8WEfVi6A2YKCTOvw5Ldy7mtsOkqRvGjnzy6g7iMMDsgu7xREuCzqATLDLQVKcQ==}
+  /@types/websocket/1.0.3:
+    resolution: {integrity: sha512-ZdoTSwmDsKR7l1I8fpfQtmTI/hUwlOvE3q0iyJsp4tXU0MkdrYowimDzwxjhQvxU4qjhHLd3a6ig0OXRbLgIdw==}
     dependencies:
       '@types/node': 15.12.1
     dev: false
@@ -352,8 +352,8 @@ packages:
     dev: true
     optional: true
 
-  /cds-dbm/0.0.26:
-    resolution: {integrity: sha512-b8IOY3M2SrO9yPoa6GPIBeCa4lpJBZcMSnSCYLDfBymu3pEXG5IrFP0gF8bIze2dfcsrXq71+jkmc7PBhGFf3w==}
+  /cds-dbm/0.0.27:
+    resolution: {integrity: sha512-HBszzLXwPulfGYrNdmA1I6pONmMeA4xFXELid7uEzQpwO6bkAV9SZ5S5gDkQZIZWIwiewF7K+35+rMlDDE4HSg==}
     hasBin: true
     dependencies:
       '@sap/cds': registry.npmjs.org/@sap/cds/5.1.5
@@ -362,7 +362,7 @@ packages:
       '@types/sqlite3': 3.1.7
       handlebars: 4.7.7
       js-yaml: 4.1.0
-      liquibase: 4.3.11
+      liquibase: 4.4.0
       pg: 8.6.0
       yargs: 17.0.1
     transitivePeerDependencies:
@@ -371,13 +371,14 @@ packages:
       - supports-color
     dev: false
 
-  /cds-pg/0.1.1:
-    resolution: {integrity: sha512-XLp0i8bSunqDaWGp9qUljEOthGCp3q9AssOES0ZNVAqjo7F7BngjR4ry0PZiwLHoQEvu9Un7aT/DICW742burA==}
+  /cds-pg/0.1.6:
+    resolution: {integrity: sha512-ldTXPcPL1H7vo/q5LdkksUkqCNBqFjzTY97ZwZYA+EdTI/XcJ+x8E9W4DTax9/INikRswTQElbRNys6DkfNwlw==}
     engines: {node: '>=12'}
     hasBin: true
     dependencies:
       '@sap/cds': registry.npmjs.org/@sap/cds/5.1.5
       moment: 2.29.1
+      passport: 0.4.1
       pg: 8.6.0
       pg-format: 1.0.4
     transitivePeerDependencies:
@@ -1287,8 +1288,8 @@ packages:
     resolution: {integrity: sha512-Xq9nH7KlWZmXAtodXDDRE7vs6DU1gTU8zYDHDiWLSip45Egwq3plLHzPn27NgvzL2r1LMPC1vdqh98sQxtqj4A==}
     dev: false
 
-  /liquibase/4.3.11:
-    resolution: {integrity: sha512-HDIA0xlcafzyWd2MqF4TMtoR0dvzmfR/6VllltaBrmYcgEn3WidKIuGI2ZJ1FL7EkLw9WS0i/LPES0bgBXoL6Q==}
+  /liquibase/4.4.0:
+    resolution: {integrity: sha512-oD/ZJgxpoR43V5Vt7o3r9ftYl16PyFco5l1EpKI4VKDQLtm1acHsyqxjA96S6c+rP51PafC4xug1Z6IJLyyAXA==}
     engines: {node: '>=6.9.0'}
     hasBin: true
     dev: false
@@ -1615,6 +1616,19 @@ packages:
     engines: {node: '>= 0.8'}
     dev: false
 
+  /passport-strategy/1.0.0:
+    resolution: {integrity: sha1-tVOaqPwiWj0a0XlHbd8ja0QPUuQ=}
+    engines: {node: '>= 0.4.0'}
+    dev: false
+
+  /passport/0.4.1:
+    resolution: {integrity: sha512-IxXgZZs8d7uFSt3eqNjM9NQ3g3uQCW5avD8mRNoXV99Yig50vjuaez6dQK2qC0kVWPRTujxY0dWgGfT09adjYg==}
+    engines: {node: '>= 0.4.0'}
+    dependencies:
+      passport-strategy: 1.0.0
+      pause: 0.0.1
+    dev: false
+
   /path-is-absolute/1.0.1:
     resolution: {integrity: sha1-F0uSaHNVNP+8es5r9TpanhtcX18=}
     engines: {node: '>=0.10.0'}
@@ -1622,6 +1636,10 @@ packages:
 
   /path-to-regexp/0.1.7:
     resolution: {integrity: sha1-32BBeABfUi8V60SQ5yR6G/qmf4w=}
+    dev: false
+
+  /pause/0.0.1:
+    resolution: {integrity: sha1-HUCLP9t2kjuVQ9lvtMnf1TXZy10=}
     dev: false
 
   /performance-now/2.1.0:
@@ -2366,10 +2384,10 @@ packages:
       - supports-color
     dev: false
 
-  registry.npmjs.org/@sap/ux-specification/1.90.1:
-    resolution: {integrity: sha512-f6HYAZqBqB5uI2GkUnhA+EWSBaB39Jcl6+u5xp3KcV7R61qbc+WWeYH2gEgkh++j5hLbCLlLoE/YxW3cXFaXEQ==, registry: https://npm.sap.com/, tarball: https://registry.npmjs.org/@sap/ux-specification/-/ux-specification-1.90.1.tgz}
+  registry.npmjs.org/@sap/ux-specification/1.90.4:
+    resolution: {integrity: sha512-4thPTf86F+pLUa076geMPXd4Glii8HdA1VULz5h155CUcxnvrRGVRVZZpQ6fsuBLWcpmAqSLhrugD/0mO3fdjQ==, registry: https://npm.sap.com/, tarball: https://registry.npmjs.org/@sap/ux-specification/-/ux-specification-1.90.4.tgz}
     name: '@sap/ux-specification'
-    version: 1.90.1
+    version: 1.90.4
     engines: {node: '>=12.18.3', yarn: '>=1.22.5'}
     dev: true
 

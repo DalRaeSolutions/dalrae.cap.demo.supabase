@@ -10,22 +10,20 @@
   },
   "dependencies": {
     "@sap/cds": "^5",
-    "@supabase/supabase-js": "^1.14.0",
-    "cds-dbm": "^0.0.26",
-    "cds-pg": "0.1.1",
-    "cookie-parser": "^1.4.5",
-    "cookie-session": "^1.4.0",
+    "@supabase/supabase-js": "^1.30.2",
+    "cds-dbm": "^0.0.28",
+    "cds-pg": "0.1.22",
+    "cookie-parser": "^1.4.6",
+    "cookie-session": "^2.0.0",
     "express": "^4"
   },
   "devDependencies": {
-    "@sap/ux-specification": "^1.90.1",
+    "@sap/ux-specification": "^1.96.3",
     "sqlite3": "^5.0.2"
   },
   "scripts": {
     "start": "cds run",
     "deploy": "pnpx cds-dbm deploy",
-    "tailwind": "pnpx tailwindcss-cli@latest build ./app/vue/tailwind.css -o ./app/vue/style.css",
-    "tailwind:prod": "NODE_ENV=production pnpx tailwindcss-cli@latest build ./app/vue/tailwind.css -o ./app/vue/style.css",
     "build:local": "cd app && ui5 build",
     "build": "node env.js"
   },
@@ -35,9 +33,10 @@
         "impl": "libs/auth.js"
       },
       "db": {
-        "kind": "database"
+        "kind": "postgres"
       },
-      "database": {
+      "postgres": {
+        "dialect": "plain",
         "impl": "cds-pg",
         "model": [
           "srv"

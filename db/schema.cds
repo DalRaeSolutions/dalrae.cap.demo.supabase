@@ -13,14 +13,14 @@ entity WorkOrders : cuid, managed {
   endDate     : Date;
   customer    : Association to Customers;
   price       : Decimal;
-  currency    : String(1);
-  paid        : Boolean;
-  paidStatus : Integer;
+  currency    : String(1) default '$';
+  paid        : Boolean default false;
+  paidStatus : Integer default 1;
 }
 
 @cds.odata.valuelist
 entity Customers : cuid, managed {
   name   : String(100);
-  orders : Association to many WorkOrders
+  orders : Composition of many WorkOrders
              on orders.customer = $self;
 }

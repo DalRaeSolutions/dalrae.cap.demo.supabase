@@ -6,7 +6,7 @@ annotate schema.WorkOrders with @(
   Capabilities : {
     Insertable : true,
     Updatable  : true,
-    Deletable  : false
+    Deletable  : true
   },
   Common       : {SemanticKey : [ID]},
   UI           : {
@@ -94,11 +94,27 @@ annotate schema.WorkOrders with @(
       {Value : price},
       {Value : paid},
     ]},
-    FieldGroup #General  : {Data : [{
-      Value : customer.name,
-      Label : 'Customer name'
-    }
-
+    FieldGroup #General  : {Data : [
+      {
+        Value : customer_ID,
+        Label : 'Customer'
+      },
+      {
+        Value : createdBy,
+        Label : 'Ordered by'
+      },
+      {
+        Value : createdAt,
+        Label : 'Ordered on'
+      },
+      {
+        Value : modifiedBy,
+        Label : 'Changed by'
+      },
+      {
+        Value : modifiedAt,
+        Label : 'Changed on'
+      }
     ]},
     FieldGroup #Modified : {Data : [
       {Value : modifiedBy},

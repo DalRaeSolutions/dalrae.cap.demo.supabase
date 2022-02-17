@@ -42,4 +42,4 @@ const setup = async () => {
 }
 
 // uncomment this to run. 
-// setup();
+setup();
