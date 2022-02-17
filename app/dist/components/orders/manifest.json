@@ -99,7 +99,7 @@
                     "selectionMode": "Multi",
                     "selectAll": true,
                     "enableExport": true,
-                    "condensedTableLayout": true
+                    "condensedTableLayout": false
                   }
                 }
               },

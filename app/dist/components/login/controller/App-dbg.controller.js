@@ -15,7 +15,9 @@ sap.ui.define([
 			e.getSource().setVisible(false);
 			
 			window.client.auth.signIn({
-				email: this.getView().byId('email').getValue()
+				email: this.getView().byId('email').getValue(),
+			}, {
+				redirectTo: window.location.href
 			});
 		}
 	});
