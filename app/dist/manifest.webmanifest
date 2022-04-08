@@ -1,1 +1,0 @@
-{"short_name":"To-Do App","name":"To-Do App","description":"Sample to-do-app for testing pwaEnabler","icons":[{"src":"images/SAP_R_192.png","type":"image/png","sizes":"192x192"},{"src":"images/SAP_R_512.png","type":"image/png","sizes":"512x512"}],"start_url":"/index.html","scope":"/","background_color":"#EFF4F9","theme_color":"#3F5161","display":"standalone"}

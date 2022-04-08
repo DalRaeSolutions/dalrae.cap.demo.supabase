@@ -1,8 +1,10 @@
 /* eslint-disable no-unused-vars */
 const cookieSession = require('cookie-session');
 const express = require('express');
+const cors = require('cors');
 
 module.exports = async (app) => {
+  app.use(cors());
   console.log('adding sessions and cookies', process.env.NODE_ENV === 'production')
   app.use(cookieSession({
     name: 'supacookie',

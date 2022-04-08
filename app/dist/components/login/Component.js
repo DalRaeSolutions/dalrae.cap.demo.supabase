@@ -1,1 +1,0 @@
-sap.ui.define(["sap/ui/core/UIComponent"],function(t){"use strict";return t.extend("dalrae.cap.supabase.fioridemo.components.login.Component",{metadata:{manifest:"json"},init:function(){t.prototype.init.apply(this,arguments)},destroy:function(){},getContentDensityClass:function(){this._sContentDensityClass="sapUiSizeCompact";return this._sContentDensityClass}})});

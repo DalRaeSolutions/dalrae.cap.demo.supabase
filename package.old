@@ -10,28 +10,22 @@
   },
   "dependencies": {
     "@sap/cds": "^5",
-    "@supabase/supabase-js": "^1.33.3",
-    "cds-dbm": "^0.0.36",
-    "cds-pg": "0.1.28",
+    "@supabase/supabase-js": "^1.30.2",
+    "cds-dbm": "^0.0.28",
+    "cds-pg": "0.1.22",
     "cookie-parser": "^1.4.6",
     "cookie-session": "^2.0.0",
-    "cors": "^2.8.5",
     "express": "^4"
   },
   "devDependencies": {
-    "@sap/ux-specification": "^1.96.9",
+    "@sap/ux-specification": "^1.96.3",
     "sqlite3": "^5.0.2"
   },
   "scripts": {
     "start": "cds run",
-    "watch": "cds run --with-mocks --in-memory --watch",
-    "diff": "npx cds-dbm diff",
-    "deploy:initial": "npx cds-dbm deploy",
-    "deploy:data": "npx cds-dbm deploy --via delta",
-    "deploy:full": "npx cds-dbm deploy --load-via delta",
+    "deploy": "pnpx cds-dbm deploy",
     "build:local": "cd app && ui5 build",
-    "build": "node env.js",
-    "watch-project1": "cds watch --open project1/webapp/index.html#fe-lrop-v4"
+    "build": "node env.js"
   },
   "cds": {
     "requires": {
@@ -39,10 +33,7 @@
         "impl": "libs/auth.js"
       },
       "db": {
-        "kind": "sqlite",
-        "credentials": {
-          "database": "sqlite.db"
-        }
+        "kind": "postgres"
       },
       "postgres": {
         "dialect": "plain",
@@ -92,6 +83,7 @@
     }
   },
   "sapux": [
-    "app/orders"
+    "app/orders",
+    "app/project1"
   ]
 }

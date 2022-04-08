@@ -5,22 +5,14 @@ using {
   sap.common.CodeList
 } from '@sap/cds/common';
 
-namespace dalrae.cap.supabase.demo;
+namespace dalrae.cap.supabase.chat;
 
-entity WorkOrders : cuid, managed {
-  description : String(100);
-  startDate   : Date;
-  endDate     : Date;
-  customer    : Association to Customers;
-  price       : Decimal;
-  currency    : String(1) default '$';
-  paid        : Boolean default false;
-  paidStatus : Integer default 1;
+entity Channel : cuid, managed {
+  name : String(100);
+  messages : Composition of many Message on messages.channel = $self;
 }
 
-@cds.odata.valuelist
-entity Customers : cuid, managed {
-  name   : String(100);
-  orders : Composition of many WorkOrders
-             on orders.customer = $self;
+entity Message : cuid, managed {
+  message : String;
+  channel : Association to Channel;
 }
