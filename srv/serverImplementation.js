@@ -1,18 +1,19 @@
 /* eslint-disable no-unused-vars */
 const cookieSession = require('cookie-session');
 const express = require('express');
-const cors = require('cors');
+const httpOnly = process.env.NODE_ENV === 'production';
+const secure = process.env.NODE_ENV === 'production';
 
 module.exports = async (app) => {
-  app.use(cors());
-  console.log('adding sessions and cookies', process.env.NODE_ENV === 'production')
-  app.use(cookieSession({
-    name: 'supacookie',
-    // secure: process.env.NODE_ENV === 'production',
-    keys: ['key1', 'key2']
-  }))
 
   app.use(express.json());
+
+  app.use(cookieSession({
+    name: 'supacookie',
+    secure,
+    httpOnly,
+    keys: ['key1', 'key2']
+  }))
 
   app.post('/auth/cookie', (req, res) => {
     req.session = req.body?.user ? req.body : null;
@@ -24,5 +25,5 @@ module.exports = async (app) => {
       loggedIn: !!req?.session?.user,
       user: req?.session?.user
     })
-  })
+  });
 }

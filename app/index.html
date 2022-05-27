@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta charset="UTF-8" />
+
+    <title>Supabase Demo</title>
+
+    <script
+      id="sap-ui-bootstrap"
+      src="https://sapui5.hana.ondemand.com/resources/sap-ui-core.js"
+      data-sap-ui-libs="sap.m, sap.ui.mdc, sap.f, sap.fe.core, sap.ushell"
+      data-sap-ui-theme="sap_horizon"
+      data-sap-ui-compatVersion="edge"
+      data-sap-ui-resourceroots='{
+			"dalrae.cap.supabase.fioridemo": "./dist/"
+		}'
+    ></script>
+    <script src="https://unpkg.com/@supabase/supabase-js"></script>
+    <script>
+      navigator.serviceWorker
+        .register(`service-worker.js`, {
+          scope: "./"
+        })
+        .then(function (reg) {
+          console.log("[Service-Worker-Registration] Service worker has been registered for scope: " + reg.scope);
+        });
+    </script>
+    <style>
+      .fullWidth { width: 100% }
+    </style>
+  </head>
+
+  <body class="sapUiBody sapUiSizeCompact" id="content">
+    <div id="loading">Loading</div>
+
+    <script>
+      const { createClient } = supabase;
+      window.client = createClient("https://vyngaswqomepemfpokkg.supabase.co", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImlneGFnbm1mamNiZ2doc29lb2twIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NDUwNTQ3NzQsImV4cCI6MTk2MDYzMDc3NH0.m4FTHPIlwDB3iJ82yMNhwvoD5oYDl7kO-eFENpl1ooY");
+
+      sap.ui.getCore().attachInit(function () {
+        sap.ui.require(["sap/ui/core/ComponentContainer"], function (ComponentContainer) {
+          new ComponentContainer({
+            height: "100%",
+            name: "dalrae.cap.supabase.fioridemo",
+          }).placeAt("content");
+        });
+      });
+    </script>
+  </body>
+</html>

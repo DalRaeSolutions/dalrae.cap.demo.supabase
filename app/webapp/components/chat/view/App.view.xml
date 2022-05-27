@@ -1,0 +1,10 @@
+<mvc:View controllerName="dalrae.cap.supabase.fioridemo.components.chat.controller.App" displayBlock="true"
+	xmlns="sap.m"
+	height="100%"
+	xmlns:core="sap.ui.core"
+	xmlns:f="sap.f"
+	xmlns:mvc="sap.ui.core.mvc">
+		<Page showHeader="false" >
+			<f:FlexibleColumnLayout id="fcl" stateChange="onStateChanged" layout="{layout>/layout}" backgroundDesign="Solid"/>
+		</Page>
+</mvc:View>

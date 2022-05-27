@@ -10,17 +10,17 @@
   },
   "dependencies": {
     "@sap/cds": "^5",
-    "@supabase/supabase-js": "^1.33.3",
     "cds-dbm": "^0.0.36",
     "cds-pg": "0.1.28",
     "cookie-parser": "^1.4.6",
     "cookie-session": "^2.0.0",
     "cors": "^2.8.5",
-    "express": "^4"
+    "express": "^4",
+    "http-proxy-middleware": "^2.0.6"
   },
   "devDependencies": {
-    "@sap/ux-specification": "^1.96.9",
-    "sqlite3": "^5.0.2"
+    "@sap/ux-specification": "^1.100.3",
+    "sqlite3": "^5.0.8"
   },
   "scripts": {
     "start": "cds run",
@@ -39,10 +39,7 @@
         "impl": "libs/auth.js"
       },
       "db": {
-        "kind": "sqlite",
-        "credentials": {
-          "database": "sqlite.db"
-        }
+        "kind": "postgres"
       },
       "postgres": {
         "dialect": "plain",
@@ -92,6 +89,6 @@
     }
   },
   "sapux": [
-    "app/orders"
+    "app"
   ]
 }
