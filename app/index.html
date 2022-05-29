@@ -1,51 +1,79 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta charset="UTF-8" />
 
-    <title>Supabase Demo</title>
+<head>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta charset="UTF-8" />
 
-    <script
-      id="sap-ui-bootstrap"
-      src="https://ui5.sap.com/1.102.0/resources/sap-ui-core.js"
-      data-sap-ui-libs="sap.m, sap.ui.mdc, sap.f, sap.fe.core, sap.ushell"
-      data-sap-ui-theme="sap_horizon_dark"
-      data-sap-ui-compatVersion="edge"
-      data-sap-ui-resourceroots='{
-			"dalrae.cap.supabase.fioridemo": "./dist/"
-		}'
-    ></script>
-    <script src="https://unpkg.com/@supabase/supabase-js"></script>
-    <script>
-      navigator.serviceWorker
-        .register(`service-worker.js`, {
-          scope: "./"
-        })
-        .then(function (reg) {
-          console.log("[Service-Worker-Registration] Service worker has been registered for scope: " + reg.scope);
-        });
-    </script>
-    <style>
-      .fullWidth { width: 100% }
-    </style>
-  </head>
+  <title>Supabase Demo</title>
+  <script src="/local/supabase.js"></script>
+  <link rel="stylesheet" href="/local/style.css">
+</head>
 
-  <body class="sapUiBody sapUiSizeCompact" id="content">
-    <div id="loading">Loading</div>
+<body>
+  <section>
+    <button type="button" id="send">Send chat message</button>
+    <button type="button" id="login">Send login request</button>
+    <button type="button" id="logout">Log out</button>
 
-    <script>
+    <h1>Messages received from subscription</h1>
+    <pre id="msg"></pre>
+
+    <h1>Event</h1>
+    <pre id="event">No authentication event fired yet</pre>
+
+    <h1>Metadata</h1>
+    <pre id="metadata">Waiting for metadata call</pre>
+
+    <h1>User from /auth/me</h1>
+    <pre id="user">No user</pre>
+  </section>
+
+  <script>
+    (async () => {
+      const $send = document.getElementById('send');
+      const $login = document.getElementById('login');
+      const $logout = document.getElementById('logout');
+      const $event = document.getElementById('event');
+      const $metadata = document.getElementById('metadata');
+      const $user = document.getElementById('user');
       const { createClient } = supabase;
-      window.client = createClient("https://vyngaswqomepemfpokkg.supabase.co", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImlneGFnbm1mamNiZ2doc29lb2twIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NDUwNTQ3NzQsImV4cCI6MTk2MDYzMDc3NH0.m4FTHPIlwDB3iJ82yMNhwvoD5oYDl7kO-eFENpl1ooY");
+      const client = createClient("http://localhost:59921", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZS1kZW1vIiwicm9sZSI6ImFub24ifQ.625_WdcF3KHqz5amU0x2X5WWHP-OEs_4qj0ssLNHzTs");
 
-      sap.ui.getCore().attachInit(function () {
-        sap.ui.require(["sap/ui/core/ComponentContainer"], function (ComponentContainer) {
-          new ComponentContainer({
-            height: "100%",
-            name: "dalrae.cap.supabase.fioridemo",
-          }).placeAt("content");
-        });
+      const metadata = async () => $metadata.innerHTML = `Status: ${(await fetch('/chat/$metadata')).status}`;
+      const user = async () => $user.innerHTML = JSON.stringify((await (await fetch('/auth/me')).json()), null, 2);
+
+      $login.addEventListener('click', () => client.auth.signIn({ email: 'test@test.com' }))
+      $logout.addEventListener('click', async () => client.auth.signOut() && await fetch('/auth/cookies'));
+      $send.addEventListener('click', async () => {
+        await fetch('/chat/createMessage', {
+          method: 'POST',
+          credentials: 'include',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ channel_ID: '56f72ddc-37bc-4265-be86-ce89306d1747', message: `Test: ${new Date().toLocaleString()}` })
+        });        
       });
-    </script>
-  </body>
+
+      client.auth.onAuthStateChange(async (event, session) => {
+        $event.innerHTML = `
+        <h3>${event}</h3>${JSON.stringify(session?.access_token, null, 2)}
+        `;
+
+        await metadata();
+        await user();
+
+        client.from('dalrae_cap_supabase_chat_message')
+          .on('INSERT', payload => {
+            console.log('Change received!', payload)
+          })
+          .subscribe()
+      });
+
+      await metadata();
+      await user();
+    })()
+
+  </script>
+</body>
+
 </html>
