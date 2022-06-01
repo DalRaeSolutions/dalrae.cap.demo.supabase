@@ -2,6 +2,8 @@
 
 This repository is an one approach to run a CAP application using authentication, storage and realtime capability on [Supabase](https://www.supabase.com).
 
+For more info on the presentation, see [recap.md](recap.md)
+
 ## To run
 
 1. Clone this repository. 
