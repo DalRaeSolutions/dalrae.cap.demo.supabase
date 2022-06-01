@@ -54,7 +54,7 @@ jorg@dalraesolutions.com.au
 - Show web socket throughput 
 - Show database entry
 
-## Talk about CDS-PG
+### 3. Talk about CDS-PG
 - Mention it’s not a CDS-PG demo
 - Show package.json and default-env 
 
