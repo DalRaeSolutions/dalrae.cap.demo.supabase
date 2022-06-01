@@ -18,16 +18,15 @@
       width: 100%
     }
   </style>
+  <script>
+    const { createClient } = supabase;
+    window.client = createClient("http://localhost:59921", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZS1kZW1vIiwicm9sZSI6ImFub24ifQ.625_WdcF3KHqz5amU0x2X5WWHP-OEs_4qj0ssLNHzTs");
+  </script>
 </head>
 
 <body class="sapUiBody sapUiSizeCompact" id="content">
   <div data-sap-ui-component data-name="dalrae.cap.supabase.fioridemo" data-id="container"
     data-settings='{"id" : "dalraechat"}'></div>
-
-  <script>
-    const { createClient } = supabase;
-    window.client = createClient("http://localhost:59921", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZ5bmdhc3dxb21lcGVtZnBva2tnIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NDkyOTQ1MDEsImV4cCI6MTk2NDg3MDUwMX0.myPBf4BDymm9f4yX_KRJTfnHN9mVScszqdEGRVXscyQ");
-  </script>
 </body>
 
 </html>

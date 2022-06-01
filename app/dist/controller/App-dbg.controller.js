@@ -16,13 +16,34 @@ sap.ui.define(["dalrae/cap/supabase/fioridemo/Supabase", "sap/ui/model/json/JSON
       );
     },
     onBeforeRendering: async function () {
-      const { loggedIn, user } = await $.getJSON("/auth/me");
-      this.getView().getModel().setProperty("/loggedIn", loggedIn);
-      this.getView()
-        .getModel()
-        .setProperty("/url", `https://avatars.dicebear.com/api/croodles-neutral/${user.email}.svg`);
+      this._switch();
+    },
+    _switch: async function () {
+      const user = await (await fetch('/auth/me')).json();
+      const container = this.getView().byId('container');
+      this.getView().getModel().setProperty("/loggedIn", !!user?.email);
 
-      sap.ui.getCore().setModel(this.getView().getModel(), 'user');
+      if (user?.email) {
+        this.getView()
+          .getModel()
+          .setProperty("/url", `https://avatars.dicebear.com/api/croodles-neutral/${user?.email}.svg`);
+  
+        sap.ui.getCore().setModel(this.getView().getModel(), 'user');
+
+        this._getComponent('chatComponent').then(c => container.setComponent(c))
+      } else {
+        this._getComponent('loginComponent').then(c => container.setComponent(c))
+      }
+    },
+    _getComponent: function (usage) {
+      return new Promise((resolve, reject) => {
+        this.getOwnerComponent().createComponent({
+          usage,
+          async: true
+        })
+          .then(component => resolve(component))
+          .catch(error => reject(error));
+      })      
     },
     menu: function () {
       this.getView().byId("menu").openBy(this.getView().byId("avatar"));

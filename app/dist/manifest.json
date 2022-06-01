@@ -39,7 +39,7 @@
       "id": "app"
     },
     "componentUsages": {
-      "orderComponent": {
+      "chatComponent": {
         "name": "dalrae.cap.supabase.fioridemo.components.chat"
       },
       "loginComponent": {
