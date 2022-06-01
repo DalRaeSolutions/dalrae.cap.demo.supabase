@@ -1,1 +1,0 @@
-sap.ui.define(["sap/ui/core/UIComponent","sap/ui/core/EventBus"],function(t){"use strict";return t.extend("dalrae.cap.supabase.fioridemo.Component",{metadata:{manifest:"json"},init:function(){t.prototype.init.apply(this,arguments)},destroy:function(){},getContentDensityClass:function(){this._sContentDensityClass="sapUiSizeCompact";return this._sContentDensityClass}})});

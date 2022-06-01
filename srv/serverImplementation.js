@@ -10,7 +10,7 @@ module.exports = async (app) => {
   /**
    * 1. Enable cookie parser
    */
-  //app.use(cookieParser());
+  app.use(cookieParser());
 
 
   /**
@@ -28,21 +28,21 @@ module.exports = async (app) => {
   /**
    * Validate cookie and pass the results on to other middleware
    */
-  // app.use(async ({cookies, ...req}, res, next) => {
-  //   const token = cookies['sb-access-token'];
-  //   const {data: user, error } = await supabase.auth.api.getUser(token);
-  //   res.locals = { user, error };
+  app.use(async ({cookies, ...req}, res, next) => {
+    const token = cookies['sb-access-token'];
+    const {data: user, error } = await supabase.auth.api.getUser(token);
+    res.locals = { user, error };
+    
+    next();
+  })
 
-  //   next();
-  // })
+  app.get('/auth/me', (req, res) => {
+    res.status(200).json(res?.locals?.user)
+  });
 
-  // app.get('/auth/me', (req, res) => {
-  //   res.status(200).json(res?.locals?.user)
-  // });
-
-  // app.get('/auth/cookies', (req, res) => {
-  //   res.clearCookie('sb-access-token', { domain: 'localhost', httpOnly: true, secure: true });
-  //   res.clearCookie('sb-refresh-token', { domain: 'localhost', httpOnly: true, secure: true });
-  //   res.status(200).json({success: true})
-  // });
+  app.get('/auth/cookies', (req, res) => {
+    res.clearCookie('sb-access-token', { domain: 'localhost', httpOnly: true, secure: true });
+    res.clearCookie('sb-refresh-token', { domain: 'localhost', httpOnly: true, secure: true });
+    res.status(200).json({success: true})
+  });
 }

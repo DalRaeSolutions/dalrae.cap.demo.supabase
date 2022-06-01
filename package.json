@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@sap/cds": "^5",
+    "@supabase/supabase-js": "^1.35.3",
     "cds-dbm": "^0.0.36",
     "cds-pg": "0.1.28",
     "cookie-parser": "^1.4.6",

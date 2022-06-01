@@ -1,33 +1,94 @@
-# CAP and Supabase
+# RECAP 2022
 
-## Keep at hand
-     API URL: http://localhost:59921
-          DB URL: postgresql://postgres:postgres@localhost:59922/postgres
-      Studio URL: http://localhost:59923
-    Inbucket URL: http://localhost:59924
-        anon key: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZS1kZW1vIiwicm9sZSI6ImFub24ifQ.625_WdcF3KHqz5amU0x2X5WWHP-OEs_4qj0ssLNHzTs
-service_role key: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZS1kZW1vIiwicm9sZSI6InNlcnZpY2Vfcm9sZSJ9.vI9obAHOGyVVKa3pD--kJlyxp-Z2zV9UUMAhKpNLAcU
+1. INTRO
+2. SUPABASE INTRO & WALKTHROUGH
+3. VSCODE, CAP APPLICATION AS IT IS WITH AUTH
+4. SUPABASE CLI AND DOCKER
+5. CDS-PG
+6. AUTH TIME: SHOW INDEX FILE, NO EVENT, 401
+    1. SHOW SUPABASE METHODS IN INDEX
+    2. SIGN IN, SHOW EVENT, SHOW LOCAL STORAGE & COOKIE
+7. SHOW COOKIE PARSER, LOG COOKIE TO CONSOLE
+8. SHOW COOKIE FULL, DECODE AND PASS TO AUTH
+9. SHOW LOGOUT
+10. SHOW REALTIME, LOG MESSAGE THROUGH BUTTON. SHOW WEBSOCKET IN CONSOLE
+11. PROS AND CONS
+12. TIME? TRY TO FIND CHAT
 
-## Prep
+# Intro 
 
-Open VSCODE
-Open supabase website
-Open local studio http://localhost:59923
-Open inbucket http://localhost:59924
+- I’m Jorg, tech lead at DalRae Solutions
+- Sadly not wearing reCAP hoodie
+- Set expectations regarding level of knowledge: have seen the hello world and awareness of Postgres plugin
 
-## Intro 
+# Supabase intro
+
+- Firebase: NoSQL database, authentication, file storage, real time comms
+- Supabase, built around open source add ons for Postgres, and the idea of Row Level Security
+- Show Dashboard 
+
+# Show Live App
+
+http://localhost:59824
+http://localhost:50378/
+
+- Put email address in one window, open inbucket and click link
+- Watch both tabs log on to app
+- Put message in one app and watch it appear in the other as well
+
+# Switch to VSCode
+
+- Show CAP application, 
+- Show schema and service
+
+# Talk about local setup and cli 
+
+- Show Supabase folder
+- Explain SB start, show output of secrets and url’s 
+- Show Docker
+
+# CODE WALKTHROUGH
+
+# Talk about CDS-PG
+- Mention it’s not a CDS-PG demo
+- Show package.json and default-env 
+
+# AUTH
+ 
+# IN INDEX FILE
+- Show INDEX file, show successful call to $metadata
+- Show `signIn` function and `onAuthChanged` function
+- Demonstrate what happens, click inbucket link
+- Show local storage and cookies
+
+# IN CDS
+- Show cookie parser, log cookie in middleware
+- Show middleware with supabase verification, and log user object
+- Show `lib/auth` and use user object to create a CDS USER
+
+# SHOW LOGOUT COOKIE
+- Show signout function in index, show cookie clearing in CDS
+- Log out and show the 401 
+
+# REAL TIME
+- Log back in
+- Show snippet for subscription 
+- Call `createMessage`
+- Show web socket throughput 
+- Show database entry
 
 
-## Run through supabase.com
+# Pros and cons 
+- Easy and quick. 
+- User management and statistics 
+- Mix and match features such as real-time and storage with Fiori elements UIs. Bit of a choose your own adventure 
+    - In this case, auth and realtime through client, could be done on server as well
+- Supabase more of a SAAS back end
+- Can host multiple apps due to Postgres schema, is like hdi container. 
+- Potential for multi-tenanted apps, reuse and compose 
 
-- login dalrae github
-- show home
-- show user admin
-- show log explorer
-- show settings
-- mention functions and document storage
+# CONTACT:
 
-## About the demo
-
-- prebuilt one
-- not a ton of time
+Jorg Thuijls
+@_jorgt
+jorg@dalraesolutions.com.au
