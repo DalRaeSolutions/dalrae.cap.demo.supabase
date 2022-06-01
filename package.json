@@ -30,9 +30,7 @@
     "deploy:initial": "npx cds-dbm deploy",
     "deploy:data": "npx cds-dbm deploy --via delta",
     "deploy:full": "npx cds-dbm deploy --load-via delta",
-    "build:local": "cd app && ui5 build",
-    "build": "node env.js",
-    "watch-project1": "cds watch --open project1/webapp/index.html#fe-lrop-v4"
+    "build:local": "cd app && ui5 build"
   },
   "cds": {
     "requires": {
