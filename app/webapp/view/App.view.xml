@@ -1,0 +1,29 @@
+<mvc:View controllerName="dalrae.cap.supabase.fioridemo.controller.App" displayBlock="true"
+	xmlns="sap.m"
+	xmlns:f="sap.f"
+	xmlns:core="sap.ui.core"
+	xmlns:mvc="sap.ui.core.mvc">
+	<f:ShellBar id="shell" title="Supabase demo" secondTitle="Integrating CAP and Supabase" homeIcon="https://ui5.sap.com/resources/sap/ui/documentation/sdk/images/logo_ui5.png" showCopilot="false" showSearch="false" showMenuButton="false" showNavButton="true" navButtonPressed=".onNavButtonPressed" showNotifications="true" notificationsNumber="{/notificationsNumber}" notificationsPressed=".onNotificationsPressed" avatarPressed=".menu" showProductSwitcher="false">
+		<f:profile>
+			<Avatar visible="{= !!${/loggedIn} }" initials="UI" src="{/url}" id="avatar" />
+		</f:profile>
+	</f:ShellBar>
+
+	<core:ComponentContainer width="100vw" height="calc(100vh - 48px)" id="container" async="true" />
+	<!-- <core:ComponentContainer visible="{= !${/loggedIn} }" width="100vw" height="calc(100vh - 48px)" id="container1" usage="loginComponent" async="true" />
+	<core:ComponentContainer visible="{= !!${/loggedIn} }" width="100vw" height="calc(100vh - 48px)" id="container2" usage="orderComponent" async="true" /> -->
+
+	<Menu id="menu">
+		<MenuItem text="Github" press="github" />
+		<MenuItem text="Logout" press="logout" />
+	</Menu>
+
+	<!-- <NotificationList id="notifications" title="Notifications" showCloseButton="true" close=".onItemClose" items="{/notifications}">
+		<layoutData>
+			<FlexItemData maxWidth="600px" />
+		</layoutData>
+		<items>
+			<NotificationListItem title="Order {= ${ID}.split('-')[3]}" description="lel" />
+		</items>
+	</NotificationList> -->
+</mvc:View>
