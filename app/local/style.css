@@ -13,6 +13,14 @@ section {
   flex-direction: column;    
 }
 
+h1 {
+  padding-top: 2rem;
+}
+
+#msg {
+  padding-bottom: 2rem;
+}
+
 * {
   width: 100%;
   margin: 5px;
@@ -32,4 +40,16 @@ button {
 button:active {
   transform: scale(0.98);
   background-color: rgb(15, 102, 1); /* Green */
+}
+
+#event {
+  width: 500px;
+white-space: nowrap;
+overflow: hidden;
+text-overflow: ellipsis;
+
+}
+
+a {
+  color: white;
 }
