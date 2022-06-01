@@ -4,12 +4,17 @@ This repository is an one approach to run a CAP application using authentication
 
 For more info on the presentation, see [recap.md](recap.md)
 
-## To run
+## Prerequisites
 
 1. Clone this repository. 
 2. Make sure CAP is installed correct, via `npm i -g @sap/cds-dk` see [the doco](https://cap.cloud.sap/docs/get-started/)
 3. Install the Supabase CLI. Follow the [instructions on local development](https://supabase.com/docs/guides/local-development). 
 4. There may be changes to the port or keys that the supabase tools provide. Please go and update them in `default-env.json`, in `app/index.html`, `app/fiori.html`, `app/dev.html` and `srv/serverImplementation.js`. I realise this should be done through .env files, feel free to update this
+
+## To run
+
+1. Run `supabase start`. If it starts, deploy your schema with `npm run deploy:full`. See Gotchas.
+2. Run `cds watch`
 
 ## In addition
 
