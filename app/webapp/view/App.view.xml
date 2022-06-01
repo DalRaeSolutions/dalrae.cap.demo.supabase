@@ -9,8 +9,9 @@
 		</f:profile>
 	</f:ShellBar>
 
-	<core:ComponentContainer visible="{= !${/loggedIn} }" width="100vw" height="calc(100vh - 48px)" id="container1" usage="loginComponent" async="true" />
-	<core:ComponentContainer visible="{= !!${/loggedIn} }" width="100vw" height="calc(100vh - 48px)" id="container2" usage="orderComponent" async="true" />
+	<core:ComponentContainer width="100vw" height="calc(100vh - 48px)" id="container" async="true" />
+	<!-- <core:ComponentContainer visible="{= !${/loggedIn} }" width="100vw" height="calc(100vh - 48px)" id="container1" usage="loginComponent" async="true" />
+	<core:ComponentContainer visible="{= !!${/loggedIn} }" width="100vw" height="calc(100vh - 48px)" id="container2" usage="orderComponent" async="true" /> -->
 
 	<Menu id="menu">
 		<MenuItem text="Github" press="github" />

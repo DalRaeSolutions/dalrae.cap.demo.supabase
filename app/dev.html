@@ -1,42 +1,33 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta charset="UTF-8" />
 
-    <title>Supabase Demo</title>
+<head>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta charset="UTF-8" />
 
-    <script
-      id="sap-ui-bootstrap"
-      src="https://ui5.sap.com/1.102.0/resources/sap-ui-core.js"
-      data-sap-ui-libs="sap.m, sap.ui.mdc, sap.f, sap.fe.core, sap.ushell"
-      data-sap-ui-theme="sap_horizon_dark"
-      data-sap-ui-compatVersion="edge"
-      data-sap-ui-resourceroots='{
-			"dalrae.cap.supabase.fioridemo": "./webapp/"
-		}'
-    ></script>
-    <script src="https://unpkg.com/@supabase/supabase-js"></script>
-    <style>
-      .fullWidth { width: 100% }
-    </style>
-  </head>
+  <title>Supabase Demo</title>
 
-  <body class="sapUiBody sapUiSizeCompact" id="content">
-    <div id="loading">Loading</div>
+  <script id="sap-ui-bootstrap" src="https://ui5.sap.com/1.102.0/resources/sap-ui-core.js"
+    data-sap-ui-libs="sap.m, sap.ui.mdc, sap.f, sap.fe.core, sap.ushell" data-sap-ui-theme="sap_horizon_dark"
+    data-sap-ui-compatVersion="edge" data-sap-ui-oninit="module:sap/ui/core/ComponentSupport" data-sap-ui-async="true"
+    data-sap-ui-frameOptions="trusted"
+    data-sap-ui-resourceroots='{"dalrae.cap.supabase.fioridemo": "./webapp/"}'></script>
+  <script src="https://unpkg.com/@supabase/supabase-js"></script>
+  <style>
+    .fullWidth {
+      width: 100%
+    }
+  </style>
+</head>
 
-    <script>
-      const { createClient } = supabase;
-      window.client = createClient("https://vyngaswqomepemfpokkg.supabase.co", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZ5bmdhc3dxb21lcGVtZnBva2tnIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NDkyOTQ1MDEsImV4cCI6MTk2NDg3MDUwMX0.myPBf4BDymm9f4yX_KRJTfnHN9mVScszqdEGRVXscyQ");
+<body class="sapUiBody sapUiSizeCompact" id="content">
+  <div data-sap-ui-component data-name="dalrae.cap.supabase.fioridemo" data-id="container"
+    data-settings='{"id" : "dalraechat"}'></div>
 
-      sap.ui.getCore().attachInit(function () {
-        sap.ui.require(["sap/ui/core/ComponentContainer"], function (ComponentContainer) {
-          new ComponentContainer({
-            height: "100%",
-            name: "dalrae.cap.supabase.fioridemo",
-          }).placeAt("content");
-        });
-      });
-    </script>
-  </body>
+  <script>
+    const { createClient } = supabase;
+    window.client = createClient("https://vyngaswqomepemfpokkg.supabase.co", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZ5bmdhc3dxb21lcGVtZnBva2tnIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NDkyOTQ1MDEsImV4cCI6MTk2NDg3MDUwMX0.myPBf4BDymm9f4yX_KRJTfnHN9mVScszqdEGRVXscyQ");
+  </script>
+</body>
+
 </html>

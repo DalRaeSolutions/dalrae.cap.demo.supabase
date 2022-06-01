@@ -27,3 +27,7 @@ mta_archives/
 # IDEs
 # .vscode
 # .idea
+
+# Supabase
+**/supabase/.branches
+**/supabase/.temp

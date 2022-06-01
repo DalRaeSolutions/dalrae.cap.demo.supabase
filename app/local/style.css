@@ -1,0 +1,55 @@
+
+body, html {
+  margin: 0;
+  padding: 0;
+  background-color: #333;
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+section {
+  padding-top: 30px;
+  display: flex;
+  flex-direction: column;    
+}
+
+h1 {
+  padding-top: 2rem;
+}
+
+#msg {
+  padding-bottom: 2rem;
+}
+
+* {
+  width: 100%;
+  margin: 5px;
+}
+
+button {
+  background-color: rgb(21, 158, 0); /* Green */
+  border: none;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  padding: 5px 15px;
+  display: inline-block;
+  width: 200px;
+}
+
+button:active {
+  transform: scale(0.98);
+  background-color: rgb(15, 102, 1); /* Green */
+}
+
+#event {
+  width: 500px;
+white-space: nowrap;
+overflow: hidden;
+text-overflow: ellipsis;
+
+}
+
+a {
+  color: white;
+}

@@ -8,10 +8,11 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/ui/model/json/JSONModel"], fun
     onInit: function () {
       const { client } = window;
       this.bus = sap.ui.getCore().getEventBus();
-      this.cookie(client.auth.session() || {});
+      //this.cookie(client.auth.session() || {});
 
       client.auth.onAuthStateChange((event, session) => {
-        this.cookie(session || {});
+        //this.cookie(session || {});
+        //this._switch();
       });
 
 			client.from('dalrae_cap_supabase_chat_channel').on('INSERT', payload => this.bus.publish('chat', 'insert:channel', payload)).subscribe();
@@ -34,18 +35,6 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/ui/model/json/JSONModel"], fun
     },
     github: function () {
       window.open("https://github.com/DalRaeSolutions/dalrae.cap.demo.supabase", "_blank");
-    },
-    cookie: function (session) {
-      fetch("/auth/cookie", {
-        method: "POST",
-        body: JSON.stringify(session),
-        headers: { "Content-type": "application/json; charset=UTF-8" },
-      })
-        .then((response) => response.json())
-        .then(() => {
-          this.onBeforeRendering();
-        })
-        .catch((err) => console.log(err));
-    },
+    }
   });
 });
