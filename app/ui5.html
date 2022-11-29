@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta charset="UTF-8" />
+
+    <title>Supabase Demo</title>
+
+    <script
+      id="sap-ui-bootstrap"
+      src="https://ui5.sap.com/1.102.0/resources/sap-ui-core.js"
+      data-sap-ui-libs="sap.m, sap.ui.mdc, sap.f, sap.fe.core, sap.ushell"
+      data-sap-ui-theme="sap_horizon_dark"
+      data-sap-ui-compatVersion="edge"
+      data-sap-ui-oninit="module:sap/ui/core/ComponentSupport"
+			data-sap-ui-async="true"
+			data-sap-ui-frameOptions="trusted"
+      data-sap-ui-resourceroots='{"dalrae.cap.supabase.fioridemo": "./dist/"}'
+    ></script>
+    <script src="https://unpkg.com/@supabase/supabase-js"></script>
+    <style>
+      .fullWidth { width: 100% }
+    </style>
+    <script>
+      const { createClient } = supabase;
+      window.client = createClient("http://localhost:59921", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZS1kZW1vIiwicm9sZSI6ImFub24ifQ.625_WdcF3KHqz5amU0x2X5WWHP-OEs_4qj0ssLNHzTs");
+    </script>
+  </head>
+
+  <body class="sapUiBody sapUiSizeCompact" id="content">
+    <div data-sap-ui-component data-name="dalrae.cap.supabase.fioridemo" data-id="container" data-settings='{"id" : "dalraechat"}'></div>
+  </body>
+</html>

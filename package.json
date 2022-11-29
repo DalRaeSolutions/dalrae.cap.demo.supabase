@@ -9,10 +9,10 @@
     "node": "14.*"
   },
   "dependencies": {
-    "@sap/cds": "^5",
+    "@sap/cds": "^6",
     "@supabase/supabase-js": "^1.35.3",
     "cds-dbm": "^0.0.36",
-    "cds-pg": "0.1.28",
+    "cds-pg": "0.1.32",
     "cookie-parser": "^1.4.6",
     "cookie-session": "^2.0.0",
     "cors": "^2.8.5",
@@ -20,8 +20,8 @@
     "http-proxy-middleware": "^2.0.6"
   },
   "devDependencies": {
-    "@sap/ux-specification": "^1.100.3",
-    "sqlite3": "^5.0.8"
+    "@sap/ux-specification": "^1.102.13",
+    "sqlite3": "^5.1.2"
   },
   "scripts": {
     "start": "cds run",
