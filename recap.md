@@ -1,69 +1,77 @@
-# RECAP 2022
+# Learning day
 
-## Intro 
-
-- I’m Jorg, tech lead at DalRae Solutions
-- Set expectations regarding level of knowledge: have seen the hello world and awareness of Postgres plugin
-
-## CONTACT:
+## About me 
 
 Jorg Thuijls  
 @_jorgt  
-jorg@dalraesolutions.com.au  
+jorg@dalraesolutions.com.au
 
-## Supabase intro
+## Presentation
 
-- Firebase: NoSQL database, authentication, file storage, real time comms
-- Supabase, built around open source add ons for Postgres, and the idea of Row Level Security
-- Show Dashboard 
+### Intro
+- Thanks for the invite
+- Background and interest in tech
+- Several types of innovation
+- This innovation is more about using existing technology in creative ways
 
-## Switch to VSCode
+### About CAP
+- SAP's new development framework
+- Most frameworks do API, or ORM but not both. 
+- CAP generates DB and API from same definitions, and deals with delta's
+- CAP Core goes open source
+- CAP Core AFAIK will include the Postgres plugin by default
 
-- Show CAP application, 
-- Show schema and service
+### About Supabase
+- Bit of firebase history
+- Bit of Supabase history 
+- How it works
+    - Postgres
+    - API from all public tables
+    - Security definers 
+- Walkthrough of supabase dashboard
+- Explain SB local development
+- Show CLI and Docker
 
-## Talk about local setup and cli 
+### About the project
+- Chats, so messages and channels
+- I ran cds init, supabase init
+- Installed supabase, cds-pg 
 
-- Show Supabase folder
-- Explain SB start, show output of secrets and url’s 
-- Show Docker
+### Into the CODE
+- Show CAP project
+- Show package.json, vcap-services
+- Show the schema and the service
 
-## CODE WALKTHROUGH
+### CODE WALKTHROUGH
 
-### 1. AUTH
+#### 1. AUTH
  
-#### IN INDEX FILE
+##### IN INDEX FILE
 - Show INDEX file, show successful call to $metadata
 - Show `signIn` function and `onAuthChanged` function
 - Demonstrate what happens, click inbucket link
 - Show local storage and cookies
 
-#### IN CDS
+##### IN CDS
 - Show cookie parser, log cookie in middleware
 - Show middleware with supabase verification, and log user object
 - Show `lib/auth` and use user object to create a CDS USER
 
-#### SHOW LOGOUT COOKIE
+##### SHOW LOGOUT COOKIE
 - Show signout function in index, show cookie clearing in CDS
 - Log out and show the 401 
 
-### 2. REALTIME
+#### 2. REALTIME
 - Log back in
 - Show snippet for subscription 
 - Call `createMessage`
 - Show web socket throughput 
 - Show database entry
 
-### 3. Talk about CDS-PG
-- Mention it’s not a CDS-PG demo
-- Show package.json and default-env 
-
-## Thoughts
-- Easy and quick. 
-- User management and statistics 
-- Mix and match features such as real-time and storage with Fiori elements UIs. Bit of a choose your own adventure 
-    - In this case, auth and realtime through client, could be done on server as well
-    - Supabase user can be augmented with custom claims, so it can be used for CAP authorisations as well
-- Supabase more of a SAAS back end
-- Can host multiple apps due to Postgres schema, is like hdi container. 
-- Potential for multi-tenanted apps, reuse and compose 
+### Thoughts and how CAP & Supabase work together
+- CAP can use Postgres
+- There's overlap
+- Supabase does not do migrations as well (there's a CLI)
+- Postgres policies can be tricky to set up and debug
+- CAP does not have persistence
+- Both generate a very usable API. One does ODATA and GraphQL, the other JSON and GraphQL

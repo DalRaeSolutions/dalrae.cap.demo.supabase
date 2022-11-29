@@ -6,7 +6,7 @@
   <meta charset="UTF-8" />
 
   <title>Supabase Demo</title>
-  <script src="/local/supabase.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.1.1/dist/umd/supabase.min.js"></script>
   <link rel="stylesheet" href="/local/style.css">
 </head>
 
@@ -52,7 +52,6 @@
        *  Supabase library 
        */
       const { createClient } = supabase;
-      // const client = createClient("https://zzovqfckluzleonqbsqy.supabase.co", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inp6b3ZxZmNrbHV6bGVvbnFic3F5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE2Njk2ODAyODAsImV4cCI6MTk4NTI1NjI4MH0.INmaramYDDum8ILEJwQj5c_jlfxUM9XWEXXqXvGr7Ns");
       const client = createClient("http://localhost:59921", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZS1kZW1vIiwicm9sZSI6ImFub24iLCJleHAiOjE5ODM4MTI5OTZ9.CRXP1A7WOeoJeXxjNni43kdQwgnWNReilDMblYTn_I0");
 
       /**
@@ -64,7 +63,7 @@
       /**
        * Click handlers etc
        */
-      $login.addEventListener('click', async () => await client.auth.signIn({ email: 'jorg@dalraesolutions.com.au' }))
+      $login.addEventListener('click', async () => await client.auth.signInWithOtp({ email: 'test@test.com' }))
       $logout.addEventListener('click', async () => await client.auth.signOut() && await fetch('/auth/cookies'));
       $send.addEventListener('click', async () => {
         await fetch('/chat/createMessage', {
@@ -85,14 +84,25 @@
 
         await metadata();
         await user();
-
-        const dalraeCapSupabaseChatMessage = client
-          .from('dalrae_cap_supabase_chat_message')
-          .on('INSERT', payload => {
-            console.log('Change received!', payload);
+        client
+          .channel('public:dalrae_cap_supabase_chat_message')
+          .on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'chatservice_messages' }, payload => {
+            console.log('Change received!', payload)
             $msg.innerHTML += `<br>${JSON.stringify(payload.new)}`;
           })
           .subscribe()
+
+        client
+          .channel('test')
+          .on('postgres_changes', { event: '*', schema: '*' }, payload => {
+            console.log('Change received!', payload)
+          })
+          .subscribe();
+
+
+        const channels = supabase.getChannels();
+
+        console.log(channels)
       }
       client.auth.onAuthStateChange(onStartUp);
 
