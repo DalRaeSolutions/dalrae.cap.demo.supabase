@@ -26,7 +26,8 @@ module.exports = async (app) => {
   // })
 
   /**
-   * Validate cookie and pass the results on to other middleware
+   * 3. Validate cookie and pass the results on to other middleware
+   * Don't forget to enable libs/auth
    */
   app.use(async ({cookies, ...req}, res, next) => {
     const token = cookies['sb-access-token'];
